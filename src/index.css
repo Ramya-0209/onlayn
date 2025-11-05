@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* index.css or App.css */
+#nprogress .bar {
+  background-image: linear-gradient(to right, #ec4899, #8b5cf6) !important; 
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #ec4899, 0 0 5px #8b5cf6;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s ease-in-out;
+}
+
+
+/* FILTER BAR SCROLL */
+
+/* Hide scrollbar by default */
+.scrollbar-custom {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 0; 
+}
+
+/* Show scrollbar on hover */
+.scrollbar-custom:hover::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollbar-custom:hover::-webkit-scrollbar-track {
+  background: #f3f4f6; 
+  border-radius: 4px;
+}
+
+.scrollbar-custom:hover::-webkit-scrollbar-thumb {
+  background-color: #014aaf; 
+  border-radius: 6px;
+  border: 2px solid #f3f4f6;
+}
+
+.scrollbar-custom:hover::-webkit-scrollbar-thumb:hover {
+  background-color: #014aaf; 
+}
+
+.scrollbar-custom:hover {
+  scrollbar-width: thin;
+  scrollbar-color: #014aaf #f3f4f6;
+}
+
+
+
