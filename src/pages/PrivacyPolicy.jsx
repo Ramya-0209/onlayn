@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
         </a>{" "}
         and our{" "}
         <a
-          href="https://play.google.com/store/apps/details?id=com.default.app"
+          href="https://play.google.com/store/apps/details?id=com.onlayn"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600"
