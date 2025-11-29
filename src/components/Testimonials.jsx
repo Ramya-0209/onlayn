@@ -73,7 +73,7 @@ const getColorFromName = (name) => {
           What Parents Are Saying
         </h2>
         <p className="text-white mb-10">
-          Real stories from families who love ToyShack.
+          Real stories from families who love Onlayn.
         </p>
 
         {/* Left Arrow */}

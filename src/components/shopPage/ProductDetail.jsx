@@ -328,7 +328,7 @@ const ProductDetail = () => {
       return;
     }
 
-    const appLink = "https://toyshack.in/";
+    const appLink = "https://onlayn.toys/";
     const firstImage =
       Array.isArray(product.images) && product.images.length > 0
         ? product.images[0]
@@ -342,8 +342,8 @@ const ProductDetail = () => {
 
     const message = `🧸 ${product.productName}
 💰 Price: ₹${Math.round(Number(priceToShare))}
-Check it out: ${window.location.origin}/product/${product._id}
-Website: ${appLink}`;
+Check it out: https://onlayn.toys/product/${product._id}
+Website: ${appLink}`;    
 
     try {
       if (navigator.canShare && navigator.canShare({ files: [] })) {
@@ -418,13 +418,13 @@ Website: ${appLink}`;
   return (
     <div className="bg-gray-50 min-h-screen">
       <Helmet>
-        <title>{product?.productName} | ToyShack</title>
+        <title>{product?.productName} | Onlayn </title>
         <meta property="og:title" content={`🧸 ${product?.productName}`} />
         <meta
           property="og:description"
           content={`✨ Check this amazing product! 💰 Price: ₹${Number(
             currentDiscount > 0 ? discountedPrice : currentPrice
-          ).toFixed(2)} | Buy now on ToyShack!`}
+          ).toFixed(2)} | Buy now on Onlayn!`}
         />
         <meta
           property="og:image"
@@ -436,17 +436,17 @@ Website: ${appLink}`;
         />
         <meta
           property="og:url"
-          content={`https://toyshack.in/product/${product?._id}`}
+          content={`https://apis.toyshack.in/product/${product?._id}`}
         />
         <meta property="og:type" content="product" />
-        <meta property="og:site_name" content="ToyShack" />
+        <meta property="og:site_name" content="Onlayn" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`🧸 ${product?.productName}`} />
         <meta
           name="twitter:description"
           content={`✨ Check this amazing product! 💰 Price: ₹${
             currentDiscount > 0 ? discountedPrice : currentPrice
-          } | Buy now on ToyShack!`}
+          } | Buy now on Onlayn!`}
         />
         <meta
           name="twitter:image"

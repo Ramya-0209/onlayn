@@ -67,7 +67,7 @@ const AppDownloadBanner = () => {
         <div className="flex gap-2 flex-wrap justify-center sm:justify-end">
           {platform === "android" && (
             <a
-              href="https://play.google.com/store/apps/details?id=com.yourapp.package"
+              href="https://play.google.com/store/apps/details?id=com.onlayn"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full shadow-lg transition-all duration-300 hover:bg-gray-100"
@@ -88,7 +88,7 @@ const AppDownloadBanner = () => {
           {platform === "other" && (
             <>
               <a
-                href="https://play.google.com/store/apps/details?id=com.yourapp.package"
+                href="https://play.google.com/store/apps/details?id=com.onlayn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-purple-600 bg-white rounded-full shadow-lg transition-all duration-300 hover:bg-gray-100"
@@ -110,7 +110,7 @@ const AppDownloadBanner = () => {
         <button
           onClick={handleClose}
           aria-label="Close banner"
-          className="absolute top-5 sm:top-8 right-2 sm:static p-1 text-white transition-transform duration-300 rounded-full hover:scale-125 focus:outline-none focus:ring-2 focus:ring-white"
+          className="absolute top-5 sm:top-8 right-4 sm:static p-1 text-white transition-transform duration-300 rounded-full hover:scale-125 focus:outline-none focus:ring-2 focus:ring-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -14,8 +14,8 @@ const ShareButtons = ({
 }) => {
   if (!product) return null;
 
-  const productUrl = `https://toyshack.in/product/${product._id}`;
-  const websiteUrl = "https://toyshack.in/";
+  const productUrl = `https://onlayn.toys/product/${product._id}`;
+  const websiteUrl = "https://onlayn.toys/";
   const sharePrice = currentDiscount > 0 ? discountedPrice : currentPrice;
 
   const shareMessage = `🧸 ${product.productName}

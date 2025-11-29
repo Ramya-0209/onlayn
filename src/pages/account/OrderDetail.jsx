@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png"; 
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -89,208 +90,423 @@ const goToProductDetail = (item) => {
  navigate(`/product/${item.id || item.productId}`, { state: { product: item } });
 };
 
+// const handleDownloadInvoice = () => {
+//  if (!order) return;
+
+//  const doc = new jsPDF("p", "mm", "a4");
+//  const margin = 15;
+//  const pageWidth = doc.internal.pageSize.getWidth();
+//  const rightMargin = pageWidth - margin;
+//  let y = 20;
+
+//  const couponDiscount = order.discountedAmount || 0;
+//  const calculatedSubtotal = (order.totalAmount ?? 0) + (couponDiscount ?? 0); 
+//  const finalTotalPayable = (order.totalAmount ?? 0);
+
+//  doc.setFontSize(22).setFont("helvetica", "bold").setTextColor("#014aaf");
+//  doc.text("INVOICE", margin, y);
+//  y += 12;
+
+//  // ===== Invoice Info =====
+//  doc.setFontSize(10).setFont("helvetica", "normal").setTextColor("#000");
+
+//  // Labels row
+//  doc.text("INVOICE NO.", margin, y);
+//  doc.text("DATE", margin + 60, y);
+//  doc.text("PAYMENT METHOD", margin + 110, y);
+//  doc.text("FINAL AMOUNT", rightMargin, y, { align: "right" });
+//  y += 6;
+
+//  // Values row
+//  doc.setFont("helvetica", "bold");
+//  doc.text(String(order.orderId), margin, y);
+//  const orderDate = new Date(order.orderDate);
+//  const formattedDate = `${String(orderDate.getDate()).padStart(2,'0')}/${String(orderDate.getMonth()+1).padStart(2,'0')}/${orderDate.getFullYear()}`;
+//  doc.text(formattedDate, margin + 60, y);
+//   doc.text("Cash on Delivery", margin + 110, y);
+//   doc.text(`Rs ${Math.round(finalTotalPayable)}`, rightMargin, y, { align: "right" });
+//   y += 12;
+
+//  doc.line(margin, y, rightMargin, y);
+//  y += 10;
+
+//  // ===== BILL TO =====
+//  doc.setFontSize(12).setFont("helvetica", "bold");
+//  doc.text("BILL TO:", margin, y);
+//  y += 6;
+
+//  doc.setFontSize(10).setFont("helvetica", "normal");
+//  doc.text(order.customerName, margin, y);
+//  y += 5;
+
+//  const billToAddress = [
+//   order.address || "",
+//   order.city || "",
+//   order.state || "",
+//   order.pincode || "",
+//   order.addresses || ""
+// ]
+//   .filter(Boolean)
+//   .join(", ");
+
+// if (billToAddress) {
+//   const billToLines = doc.splitTextToSize(billToAddress, 80);
+//   doc.text(billToLines, margin, y);
+//   y += billToLines.length * 3 + 4;
+// }
+
+//  if (order.mobileNumber) {
+//   doc.text(`${order.mobileNumber}`, margin, y);
+//   y += 8;
+// } else if (order.phone) {
+//   doc.text(`Phone: ${order.phone}`, margin, y);
+//   y += 8;
+// }
+
+//  // ===== BILL FROM =====
+//  doc.setFontSize(12).setFont("helvetica", "bold");
+//  doc.text("BILL FROM:", margin, y);
+//  y += 6;
+
+//  doc.setFontSize(10).setFont("helvetica", "normal");
+//  doc.text("Novelty Technologies", margin, y);
+//  y += 5;
+
+//  const billFromAddress =
+//   "D/No. 25-84/42/FF502, Venu Dharani Apartment, P.M Palem, Revenue Ward 4, Visakhapatnam, Andhra Pradesh - 530048";
+//  const billFromLines = doc.splitTextToSize(billFromAddress, 80);
+//  doc.text(billFromLines, margin, y);
+//  y += billFromLines.length * 3 + 4;
+
+//  doc.text("+91 8121301888", margin, y);
+//  y += 5;
+//  doc.text("hello.toyshack@gmail.com", margin, y);
+//  y += 5;
+//  doc.text("GST Number: 37AAYFN3829L1ZC", margin, y);
+//  y += 12;
+
+//  doc.line(margin, y, rightMargin, y);
+//  y += 10;
+
+//  // ===== Table =====
+//  const tableBody = order.products.map((item) => {
+//   const price = Number(item.mainPrice ?? 0);
+//   const qty = Number(item.quantity ?? 0);
+//   const discountedPrice = Number(item.discountedPrice ?? price);
+
+//   const gross = price * qty;
+//   const taxable = discountedPrice * qty;
+//   const igst = Number(item.igst ?? 0);
+//   const cess = Number(item.cess ?? 0);
+//   const cgst = Number(item.cgst ?? 0);
+//   const sgst = Number(item.sgst ?? 0);
+//   const total = taxable;
+
+//   const discountPercent =
+//   price > 0 ? Math.round(((price - discountedPrice) / price) * 100) : 0;
+
+//   return [
+//    item.productName || "N/A",
+//    String(qty),
+//   `Rs ${Math.round(price)}`,
+//   `Rs ${Math.round(gross)}`,
+//   `${Math.round(discountPercent)}%`,
+//   `Rs ${Math.round(taxable)}`,
+//   `${Math.round(igst)}%`,
+//   `${Math.round(cess)}%`,
+//   `${Math.round(cgst)}%`,
+//   `${Math.round(sgst)}%`,
+//   `Rs ${Math.round(total)}`
+//   ];
+//  });
+
+//  autoTable(doc, {
+//   startY: y,
+//   head: [
+//    [
+//     "Item",
+//     "Qty",
+//     "Price",
+//     "Gross Amt",
+//     "Discount",
+//     "Taxable Value",
+//     "IGST",
+//     "CESS",
+//     "SGST",
+//     "CGST",
+//     "Total",
+//    ],
+//   ],
+//   body: tableBody,
+//   theme: "grid",
+//   headStyles: {
+//    fillColor: [255, 255, 255], 
+//    textColor: [0, 0, 0],    
+//    halign: "center",
+//    fontStyle: "bold",
+//    lineWidth: 0.3,      
+//    lineColor: [0, 0, 0],    
+//   },
+//   bodyStyles: {
+//    halign: "center",
+//   },
+//   styles: {
+//    fontSize: 9,
+//    cellPadding: 3,
+//    lineWidth: 0.2,       
+//    lineColor: [0, 0, 0],
+//   },
+//  }); 
+
+//  // ===== Totals =====
+//  let finalY = doc.lastAutoTable.finalY + 10;
+//  doc.setFont("helvetica", "normal").setFontSize(10);
+
+//  // UPDATED: Use the calculated Subtotal
+//  doc.text("Subtotal", 140, finalY);
+//  doc.text(`Rs ${Math.round(calculatedSubtotal)}`, rightMargin, finalY, { align: "right" }); 
+
+//  finalY += 6;
+//  if (order.couponApplied) {
+//   // Use the calculated subtotal for percentage
+//   const discountPercent = calculatedSubtotal > 0 
+//    ? ((couponDiscount / calculatedSubtotal) * 100).toFixed(2) 
+//    : "0";
+
+//   doc.text(`Coupon`, 140, finalY);
+//   doc.text(`- Rs ${Math.round(couponDiscount)}`, rightMargin, finalY, {
+//     align: "right",
+//   });
+//   finalY += 6;
+//  }
+
+//  doc.setFont("helvetica", "bold");
+//  doc.text("Total Amount", 140, finalY);
+//  // UPDATED: Use the final total payable
+//  doc.text(`Rs ${Math.round(finalTotalPayable)}`, rightMargin, finalY, {
+//   align: "right",
+// });
+ 
+//  // ===== Footer =====
+//  doc.setFontSize(14).setFont("helvetica", "bold").setTextColor("#014aaf");
+//  doc.text("THANK YOU FOR YOUR PURCHASE!", margin, finalY + 20);
+
+//  doc.save(`invoice_${order.orderId}.pdf`);
+// };
+
 const handleDownloadInvoice = () => {
- if (!order) return;
+  if (!order) return;
 
- const doc = new jsPDF("p", "mm", "a4");
- const margin = 15;
- const pageWidth = doc.internal.pageSize.getWidth();
- const rightMargin = pageWidth - margin;
- let y = 20;
+  const doc = new jsPDF("p", "mm", "a4");
+  const margin = 15;
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const rightMargin = pageWidth - margin;
+  let y = 15;
+  
+  // ============================
+  // 🔵 TOP HORIZONTAL LINE
+  // ============================
+  // doc.setLineWidth(0.2);
+  // doc.line(margin, y, rightMargin, y);
+  // y += 5;
+  
+  // ============================
+  // 🔵 ADD CENTERED LOGO
+  // ============================
+  const logoWidth = 48;
+  const logoHeight = 20;
+  
+  const centerX = (pageWidth - logoWidth) / 2;
+  
+  // logo
+  doc.addImage(logo, "PNG", centerX, y, logoWidth, logoHeight);
+  y += logoHeight + 5;
+  
+  // ============================
+  // 🔵 BOTTOM HORIZONTAL LINE
+  // ============================
+  doc.setLineWidth(0.2);
+  doc.line(margin, y, rightMargin, y);
+  y += 15; // spacing for next content  
 
- const couponDiscount = order.discountedAmount || 0;
- const calculatedSubtotal = (order.totalAmount ?? 0) + (couponDiscount ?? 0); 
- const finalTotalPayable = (order.totalAmount ?? 0);
-
- doc.setFontSize(22).setFont("helvetica", "bold").setTextColor("#014aaf");
- doc.text("INVOICE", margin, y);
- y += 12;
-
- // ===== Invoice Info =====
- doc.setFontSize(10).setFont("helvetica", "normal").setTextColor("#000");
-
- // Labels row
- doc.text("INVOICE NO.", margin, y);
- doc.text("DATE", margin + 60, y);
- doc.text("PAYMENT METHOD", margin + 110, y);
- doc.text("FINAL AMOUNT", rightMargin, y, { align: "right" });
- y += 6;
-
- // Values row
- doc.setFont("helvetica", "bold");
- doc.text(String(order.orderId), margin, y);
- const orderDate = new Date(order.orderDate);
- const formattedDate = `${String(orderDate.getDate()).padStart(2,'0')}/${String(orderDate.getMonth()+1).padStart(2,'0')}/${orderDate.getFullYear()}`;
- doc.text(formattedDate, margin + 60, y);
-  doc.text("Cash on Delivery", margin + 110, y);
-  doc.text(`Rs ${Math.round(finalTotalPayable)}`, rightMargin, y, { align: "right" });
+  // ============================
+  // 🔵 INVOICE TITLE
+  // ============================
+  doc.setFontSize(22).setFont("helvetica", "bold").setTextColor("#014aaf");
+  doc.text("TAX INVOICE", pageWidth / 2, y, { align: "center" });
   y += 12;
 
- doc.line(margin, y, rightMargin, y);
- y += 10;
+  // ===== Invoice Info =====
+  doc.setFontSize(10).setFont("helvetica", "normal").setTextColor("#000");
 
- // ===== BILL TO =====
- doc.setFontSize(12).setFont("helvetica", "bold");
- doc.text("BILL TO:", margin, y);
- y += 6;
+  doc.text("INVOICE NO.", margin, y);
+  doc.text("DATE", margin + 60, y);
+  doc.text("PAYMENT METHOD", margin + 110, y);
+  doc.text("FINAL AMOUNT", rightMargin, y, { align: "right" });
+  y += 6;
 
- doc.setFontSize(10).setFont("helvetica", "normal");
- doc.text(order.customerName, margin, y);
- y += 5;
+  doc.setFont("helvetica", "bold");
 
- const billToAddress = [
-  order.address || "",
-  order.city || "",
-  order.state || "",
-  order.pincode || "",
-  order.addresses || ""
-]
-  .filter(Boolean)
-  .join(", ");
+  doc.text(String(order.orderId), margin, y);
 
-if (billToAddress) {
-  const billToLines = doc.splitTextToSize(billToAddress, 80);
-  doc.text(billToLines, margin, y);
-  y += billToLines.length * 3 + 4;
-}
+  const orderDate = new Date(order.orderDate);
+  const formattedDate = `${String(orderDate.getDate()).padStart(2, '0')}/${String(orderDate.getMonth() + 1).padStart(2, '0')}/${orderDate.getFullYear()}`;
 
- if (order.mobileNumber) {
-  doc.text(`${order.mobileNumber}`, margin, y);
-  y += 8;
-} else if (order.phone) {
-  doc.text(`Phone: ${order.phone}`, margin, y);
-  y += 8;
-}
+  doc.text(formattedDate, margin + 60, y);
+  doc.text("Cash on Delivery", margin + 110, y);
+  doc.text(`Rs ${Math.round(order.totalAmount ?? 0)}`, rightMargin, y, { align: "right" });
+  y += 10;
 
- // ===== BILL FROM =====
- doc.setFontSize(12).setFont("helvetica", "bold");
- doc.text("BILL FROM:", margin, y);
- y += 6;
+  doc.line(margin, y, rightMargin, y);
+  y += 10;
 
- doc.setFontSize(10).setFont("helvetica", "normal");
- doc.text("Novelty Technologies", margin, y);
- y += 5;
+  // ===== BILL TO =====
+  doc.setFontSize(12).setFont("helvetica", "bold");
+  doc.text("BILL TO:", margin, y);
+  y += 6;
 
- const billFromAddress =
-  "D/No. 25-84/42/FF502, Venu Dharani Apartment, P.M Palem, Revenue Ward 4, Visakhapatnam, Andhra Pradesh - 530048";
- const billFromLines = doc.splitTextToSize(billFromAddress, 80);
- doc.text(billFromLines, margin, y);
- y += billFromLines.length * 3 + 4;
+  doc.setFontSize(10).setFont("helvetica", "normal");
+  doc.text(order.customerName, margin, y);
+  y += 5;
 
- doc.text("+91 8121301888", margin, y);
- y += 5;
- doc.text("hello.toyshack@gmail.com", margin, y);
- y += 5;
- doc.text("GST Number: 37AAYFN3829L1ZC", margin, y);
- y += 12;
+  const billToAddress = [
+    order.address || "",
+    order.city || "",
+    order.state || "",
+    order.pincode || "",
+    order.addresses || ""
+  ]
+    .filter(Boolean)
+    .join(", ");
 
- doc.line(margin, y, rightMargin, y);
- y += 10;
+  if (billToAddress) {
+    const billToLines = doc.splitTextToSize(billToAddress, 80);
+    doc.text(billToLines, margin, y);
+    y += billToLines.length * 3 + 4;
+  }
 
- // ===== Table =====
- const tableBody = order.products.map((item) => {
-  const price = Number(item.mainPrice ?? 0);
-  const qty = Number(item.quantity ?? 0);
-  const discountedPrice = Number(item.discountedPrice ?? price);
+  if (order.mobileNumber) {
+    doc.text(`${order.mobileNumber}`, margin, y);
+    y += 8;
+  } else if (order.phone) {
+    doc.text(`Phone: ${order.phone}`, margin, y);
+    y += 8;
+  }
 
-  const gross = price * qty;
-  const taxable = discountedPrice * qty;
-  const igst = Number(item.igst ?? 0);
-  const cess = Number(item.cess ?? 0);
-  const cgst = Number(item.cgst ?? 0);
-  const sgst = Number(item.sgst ?? 0);
-  const total = taxable;
+  // ===== BILL FROM =====
+  doc.setFontSize(12).setFont("helvetica", "bold");
+  doc.text("BILL FROM:", margin, y);
+  y += 6;
 
-  const discountPercent =
-  price > 0 ? Math.round(((price - discountedPrice) / price) * 100) : 0;
+  doc.setFontSize(10).setFont("helvetica", "normal");
+  doc.text("Novelty Technologies", margin, y);
+  y += 5;
 
-  return [
-   item.productName || "N/A",
-   String(qty),
-  `Rs ${Math.round(price)}`,
-  `Rs ${Math.round(gross)}`,
-  `${Math.round(discountPercent)}%`,
-  `Rs ${Math.round(taxable)}`,
-  `${Math.round(igst)}%`,
-  `${Math.round(cess)}%`,
-  `${Math.round(cgst)}%`,
-  `${Math.round(sgst)}%`,
-  `Rs ${Math.round(total)}`
-  ];
- });
+  const billFromAddress =
+    "D/No. 25-84/42/FF502, Venu Dharani Apartment, P.M Palem, Revenue Ward 4, Visakhapatnam, Andhra Pradesh - 530048";
 
- autoTable(doc, {
-  startY: y,
-  head: [
-   [
-    "Item",
-    "Qty",
-    "Price",
-    "Gross Amt",
-    "Discount",
-    "Taxable Value",
-    "IGST",
-    "CESS",
-    "SGST",
-    "CGST",
-    "Total",
-   ],
-  ],
-  body: tableBody,
-  theme: "grid",
-  headStyles: {
-   fillColor: [255, 255, 255], 
-   textColor: [0, 0, 0],    
-   halign: "center",
-   fontStyle: "bold",
-   lineWidth: 0.3,      
-   lineColor: [0, 0, 0],    
-  },
-  bodyStyles: {
-   halign: "center",
-  },
-  styles: {
-   fontSize: 9,
-   cellPadding: 3,
-   lineWidth: 0.2,       
-   lineColor: [0, 0, 0],
-  },
- }); 
+  const billFromLines = doc.splitTextToSize(billFromAddress, 80);
+  doc.text(billFromLines, margin, y);
+  y += billFromLines.length * 3 + 4;
 
- // ===== Totals =====
- let finalY = doc.lastAutoTable.finalY + 10;
- doc.setFont("helvetica", "normal").setFontSize(10);
+  doc.text("+91 8121301888", margin, y);
+  y += 5;
+  doc.text("contact.onlayn@gmail.com", margin, y);
+  y += 5;
+  doc.text("GST Number: 37AAYFN3829L1ZC", margin, y);
+  y += 12;
 
- // UPDATED: Use the calculated Subtotal
- doc.text("Subtotal", 140, finalY);
- doc.text(`Rs ${Math.round(calculatedSubtotal)}`, rightMargin, finalY, { align: "right" }); 
+  doc.line(margin, y, rightMargin, y);
+  y += 10;
 
- finalY += 6;
- if (order.couponApplied) {
-  // Use the calculated subtotal for percentage
-  const discountPercent = calculatedSubtotal > 0 
-   ? ((couponDiscount / calculatedSubtotal) * 100).toFixed(2) 
-   : "0";
+  // ===== TABLE =====
+  const tableBody = order.products.map((item) => {
+    const price = Number(item.mainPrice ?? 0);
+    const qty = Number(item.quantity ?? 0);
+    const discountedPrice = Number(item.discountedPrice ?? price);
 
-  doc.text(`Coupon`, 140, finalY);
-  doc.text(`- Rs ${Math.round(couponDiscount)}`, rightMargin, finalY, {
-    align: "right",
+    const gross = price * qty;
+    const taxable = discountedPrice * qty;
+    const igst = Number(item.igst ?? 0);
+    const cess = Number(item.cess ?? 0);
+    const cgst = Number(item.cgst ?? 0);
+    const sgst = Number(item.sgst ?? 0);
+    const total = taxable;
+
+    const discountPercent =
+      price > 0 ? Math.round(((price - discountedPrice) / price) * 100) : 0;
+
+    return [
+      item.productName || "N/A",
+      String(qty),
+      `Rs ${Math.round(price)}`,
+      `Rs ${Math.round(gross)}`,
+      `${Math.round(discountPercent)}%`,
+      `Rs ${Math.round(taxable)}`,
+      `${Math.round(igst)}%`,
+      `${Math.round(cess)}%`,
+      `${Math.round(sgst)}%`,
+      `${Math.round(cgst)}%`,
+      `Rs ${Math.round(total)}`
+    ];
   });
+
+  autoTable(doc, {
+    startY: y,
+    head: [
+      [
+        "Item", "Qty", "Price", "Gross Amt", "Discount",
+        "Taxable Value", "IGST", "CESS", "SGST", "CGST", "Total"
+      ]
+    ],
+    body: tableBody,
+    theme: "grid",
+    headStyles: {
+      fillColor: [255, 255, 255],
+      textColor: [0, 0, 0],
+      halign: "center",
+      fontStyle: "bold",
+      lineWidth: 0.3,
+      lineColor: [0, 0, 0],
+    },
+    bodyStyles: { halign: "center" },
+    styles: {
+      fontSize: 9,
+      cellPadding: 3,
+      lineWidth: 0.2,
+      lineColor: [0, 0, 0],
+    },
+  });
+
+  // ===== TOTALS =====
+  const couponDiscount = order.discountedAmount || 0;
+  const calculatedSubtotal = (order.totalAmount ?? 0) + (couponDiscount ?? 0);
+  const finalTotalPayable = (order.totalAmount ?? 0);
+
+  let finalY = doc.lastAutoTable.finalY + 10;
+
+  doc.setFont("helvetica", "normal").setFontSize(10);
+
+  doc.text("Subtotal", 140, finalY);
+  doc.text(`Rs ${Math.round(calculatedSubtotal)}`, rightMargin, finalY, { align: "right" });
+
   finalY += 6;
- }
 
- doc.setFont("helvetica", "bold");
- doc.text("Total Amount", 140, finalY);
- // UPDATED: Use the final total payable
- doc.text(`Rs ${Math.round(finalTotalPayable)}`, rightMargin, finalY, {
-  align: "right",
-});
- 
- // ===== Footer =====
- doc.setFontSize(14).setFont("helvetica", "bold").setTextColor("#014aaf");
- doc.text("THANK YOU FOR YOUR PURCHASE!", margin, finalY + 20);
+  if (order.couponApplied) {
+    doc.text("Coupon", 140, finalY);
+    doc.text(`- Rs ${Math.round(couponDiscount)}`, rightMargin, finalY, { align: "right" });
+    finalY += 6;
+  }
 
- doc.save(`invoice_${order.orderId}.pdf`);
+  doc.setFont("helvetica", "bold");
+  doc.text("Total Amount", 140, finalY);
+  doc.text(`Rs ${Math.round(finalTotalPayable)}`, rightMargin, finalY, { align: "right" });
+
+  // ===== FOOTER =====
+  doc.setFontSize(14).setFont("helvetica", "bold").setTextColor("#014aaf");
+  doc.text("THANK YOU FOR YOUR PURCHASE!", margin, finalY + 20);
+
+  doc.save(`invoice_${order.orderId}.pdf`);
 };
 
 if (loading) return <div className="text-center py-10 text-gray-600">Loading order details...</div>;

@@ -66,12 +66,12 @@ const ContactBar = () => {
       <span>+91 8121301888</span>
      </a>
      <a
-      href="mailto:hello.toyshack@gmail.com"
+      href="mailto:contact.onlayn@gmail.com"
       className="flex items-center gap-1 hover:text-[#fb67c2] transition"
       aria-label="Email"
      >
       <MdEmail />
-      <span>hello.toyshack@gmail.com</span>
+      <span>contact.onlayn@gmail.com</span>
      </a>
     </div>
 
@@ -115,7 +115,7 @@ const ContactBar = () => {
      <div className="flex items-center gap-3 text-lg font-bold">
       {/* Facebook */}
       <a
-       href="https://facebook.com"
+       href="https://www.facebook.com/share/1ERiyqNH6j/"
        target="_blank"
        rel="noopener noreferrer"
        aria-label="Facebook"
@@ -126,7 +126,7 @@ const ContactBar = () => {
       </a>
 
       <a
-       href="https://instagram.com"
+       href="https://www.instagram.com/onlayn_toys?utm_source=qr&igsh=MXVzYnBwcWF2OHk5YQ=="
        target="_blank"
        rel="noopener noreferrer"
        aria-label="Instagram"
@@ -137,7 +137,7 @@ const ContactBar = () => {
 
       {/* Twitter/X */}
       <a
-       href="https://twitter.com"
+       href="https://x.com/onlayn_toys?t=fEDiB5dB1XdEYX0wC5TC9w&s=08"
        target="_blank"
        rel="noopener noreferrer"
        aria-label="Twitter"

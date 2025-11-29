@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "sonner";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext"; 
-import logo from "../assets/logo3.png"; 
+import logo from "../assets/logo.png"; 
 import API from "../api";
 
 const LoginPage = () => {
@@ -88,7 +88,7 @@ const LoginPage = () => {
           </Link>
         </div>
 
-        <h2 className="text-3xl font-bold text-center text-pink-500 mb-6">
+        <h2 className="text-3xl font-bold text-center text-[#e93772] mb-6">
           Welcome Back 👋
         </h2>
 

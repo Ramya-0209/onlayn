@@ -28,10 +28,10 @@ import Settings from "./pages/account/Settings";
 import OrderDetail from "./pages/account/OrderDetail";
 import CheckoutPage from "./components/CheckoutPage";
 import OrderConfirmation from "./components/OrderConfirmation";
-import RefundPolicy from "./pages/RefundPolicy";
 import { FiltersProvider } from "./context/FiltersContext";
 import ScrollToTop from "./components/ScrollToTop";
 import { ScrollProvider } from "./context/ScrollContext";
+import ExchangePolicy from "./pages/ExchangePolicy";
 
 const App = () => {
   return (
@@ -69,7 +69,7 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/exchange-policy" element={<ExchangePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

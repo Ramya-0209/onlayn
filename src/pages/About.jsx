@@ -38,13 +38,13 @@ const About = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           {/* Text Section */}
           <div className="lg:col-span-6 text-justify">
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-extrabold text-gray-800 mb-6 leading-tight">
               Welcome to{" "}
-              <span className="font-extrabold text-[#fb67c2]">Toy</span>
-              <span className="font-extrabold text-[#014aaf]">Shack</span>
+              <span className="font-extrabold text-[#e93772]">Onl</span>
+              <span className="font-extrabold text-[#13426b]">ayn</span>
             </h2>
             <p className="text-gray-600 text-base sm:text-lg mb-5">
-              ToyShack is where fun meets learning! We are a passionate team of
+              Onlayn is where fun meets learning! We are a passionate team of
               parents and educators dedicated to curating the safest, most
               delightful toys that inspire creativity, critical thinking, and
               Shackful memories.
@@ -56,7 +56,7 @@ const About = () => {
               child's face.
             </p>
             <p className="text-gray-600 text-base sm:text-lg">
-              At ToyShack, we value safety, sustainability, and spark. Our goal is
+              At onlayn, we value safety, sustainability, and spark. Our goal is
               to make childhood magical and memorable — one toy at a time.
             </p>
           </div>
@@ -69,8 +69,8 @@ const About = () => {
                 alt="Happy kids with toys"
                 className="shadow-xl w-full rounded-lg object-cover"
               />
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-pink-100 border border-pink-300 text-pink-700 font-semibold px-4 sm:px-6 py-2 rounded-full shadow-lg text-sm sm:text-base">
-                Trusted by 10,000+ Families
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-pink-100 border border-pink-300 text-pink-700 font-semibold px-2 sm:px-4 py-2 rounded-full shadow-lg text-sm sm:text-base">
+               Trusted by many families❤️
               </div>
             </div>
           </div>
@@ -85,8 +85,8 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
             Why Parents Love{" "}
-            <span className="text-[#fb67c2]">Toy</span>
-            <span className="text-[#014aaf]">Shack</span>
+            <span className="text-[#e93772]">On</span>
+            <span className="text-[#13426b]">layn</span>
           </h3>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">

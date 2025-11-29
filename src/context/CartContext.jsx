@@ -20,6 +20,7 @@ export const CartProvider = ({ children }) => {
         `https://apis.toyshack.in/Dashboard/cart/cart-data?customerId=${user._id}`
       );
       const data = await res.json();
+
       setCartItems(data.items || []);
     } catch (error) {
       console.error("Fetch cart failed:", error);

@@ -2,7 +2,7 @@ import React from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo3.png";
+import logo from "../assets/logo.png";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
 const Footer = () => {
@@ -16,7 +16,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="ToyShack Logo"
-              className="h-20"
+              className="h-22"
             />
           </Link>
 
@@ -44,10 +44,10 @@ const Footer = () => {
             <li className="flex items-center gap-2">
               <HiOutlineMail className="text-pink-600" />
               <a
-                href="mailto:hello.toyshack@gmail.com"
+                href="mailto:contact.onlayn@gmail.com"
                 className="hover:text-pink-600 transition"
               >
-                hello.toyshack@gmail.com
+                contact.onlayn@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-2">
@@ -70,13 +70,13 @@ const Footer = () => {
             </li>
           </ul>
           <div className="flex gap-4 mt-4 text-lg justify-center sm:justify-start">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition hover:opacity-80" style={{ color: "#1877F2" }}>
+            <a href="https://www.facebook.com/share/1ERiyqNH6j/" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition hover:opacity-80" style={{ color: "#1877F2" }}>
               <FaFacebookF />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition hover:opacity-80" style={{ color: "#E4405F" }}>
+            <a href="https://www.instagram.com/onlayn_toys?utm_source=qr&igsh=MXVzYnBwcWF2OHk5YQ==" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition hover:opacity-80" style={{ color: "#E4405F" }}>
               <FaInstagram />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="transition hover:opacity-80" style={{ color: "black" }}>
+            <a href="https://x.com/onlayn_toys?t=fEDiB5dB1XdEYX0wC5TC9w&s=08" target="_blank" rel="noreferrer" aria-label="Twitter" className="transition hover:opacity-80" style={{ color: "black" }}>
               <FaXTwitter />
             </a>
           </div>
@@ -88,14 +88,14 @@ const Footer = () => {
           <ul className="space-y-1 text-sm">
             <li><Link to="/privacy-policy" className="hover:text-pink-600 transition">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-pink-600 transition">Terms & Conditions</Link></li>
-            <li><Link to="/refund-policy" className="hover:text-pink-600 transition">Exchange Policy</Link></li>
+            <li><Link to="/exchange-policy" className="hover:text-pink-600 transition">Exchange Policy</Link></li>
           </ul>
         </div>
       </div>
 
       {/* Copyright */}
       <div className="text-center text-sm text-gray-600 mt-8">
-        © {new Date().getFullYear()} ToyShack. All rights reserved.
+        © {new Date().getFullYear()} Onlayn. All rights reserved.
       </div>
     </footer>
   );

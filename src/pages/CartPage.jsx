@@ -142,7 +142,7 @@ const CartPage = () => {
                     />
                     <div className="flex-1 text-center sm:text-left">
                       <h3 className="font-bold text-lg text-gray-900 mb-1">
-                        {item.productId?.productName || "Product Name"}
+                        {item.productid || item.productName || "Product Name"}
                       </h3>
                       {item.size && (
                         <p className="text-gray-700 font-medium text-sm">Size: {item.size}</p>

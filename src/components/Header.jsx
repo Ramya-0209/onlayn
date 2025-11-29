@@ -9,7 +9,7 @@ import {
   FaSignOutAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import logo from "../assets/logo3.png";
+import logo from "../assets/logo.png";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useAuth } from "../context/AuthContext";

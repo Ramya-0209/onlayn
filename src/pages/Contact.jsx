@@ -315,18 +315,18 @@ const Contact = () => {
                   <div>
                     <p className="text-sm font-semibold text-gray-700">Email</p>
                     <a
-                      href="mailto:hello.toyshack@gmail.com"
+                      href="mailto:contact.onlayn@gmail.com"
                       className="text-sm text-gray-700 hover:text-pink-600 transition"
                     >
-                      hello.toyshack@gmail.com
+                      contact.onlayn@gmail.com
                     </a>
                   </div>
                 </div>
               </div>
               <div className="border-t border-white/40 pt-4">
                 <p className="text-sm font-semibold text-gray-700 mb-1">Working Hours</p>
-                <p className="text-sm text-gray-700">Mon – Sat: 9:00 AM – 6:00 PM</p>
-                <p className="text-sm text-gray-700">Sunday: Closed</p>
+                <p className="text-sm text-gray-700">9:00 AM – 7:00 PM</p>
+                {/* <p className="text-sm text-gray-700">Sunday: Closed</p> */}
               </div>
             </div>
             <div className="rounded-3xl overflow-hidden shadow-md">
